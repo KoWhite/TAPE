@@ -1,0 +1,19 @@
+# Tape Python bridge dependencies
+#
+# Install into a project-local venv (not globally):
+#   cd server-py
+#   python -m venv .venv
+#   .\.venv\Scripts\Activate.ps1     # PowerShell on Windows
+#   source .venv/bin/activate        # bash on macOS/Linux
+#   pip install -r requirements.txt
+
+# Futu OpenAPI SDK - the OpenD client used by futu_bridge.py.
+# Pulls in pandas + numpy as transitive deps, but we list them explicitly
+# below since the indicator/backtest engines use them directly.
+futu-api>=7.0
+pandas>=2.0
+numpy>=1.24
+
+# Yahoo Finance fallback for bars / earnings / news; optional but recommended.
+# The bridge degrades gracefully when this isn't installed.
+yfinance>=0.2.40

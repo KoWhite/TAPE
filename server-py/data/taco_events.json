@@ -1,0 +1,6 @@
+[
+  { "date": "2025-03-04", "label": "North America auto exemption", "tone": "gray" },
+  { "date": "2025-04-09", "label": "Reciprocal tariff pause", "tone": "red" },
+  { "date": "2025-05-12", "label": "US-China tariff truce", "tone": "red" },
+  { "date": "2025-06-01", "label": "EU tariff extension watch", "tone": "gray" }
+]

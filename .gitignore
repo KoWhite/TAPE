@@ -1,0 +1,36 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Auto-generated
+src/auto-imports.d.ts
+src/components.d.ts
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+server-py/.venv/
+server-py/data/
+!server-py/data/
+server-py/data/*
+!server-py/data/taco_events.json
+*.db
+*.db-shm
+*.db-wal

@@ -1,0 +1,207 @@
+﻿/* Design tokens: trader-terminal aesthetic, no AI gradients */
+:root {
+  --tape-font-sans: 'Geist', 'Inter var', 'Inter', 'Noto Sans SC',
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei UI',
+    'PingFang SC', system-ui, sans-serif;
+  --tape-font-mono: 'Geist Mono', 'JetBrains Mono', 'SFMono-Regular',
+    'SF Mono', Consolas, 'Liberation Mono', monospace;
+  --tape-bg: #f7f8fa;
+  --tape-bg-elev: #ffffff;
+  --tape-surface: #ffffff;
+  --tape-surface-hover-bg: #f1f3f7;
+  --tape-glass: rgba(255, 255, 255, 0.72);
+  --tape-button-bg: rgba(11, 15, 23, 0.04);
+  --tape-button-hover-bg: rgba(11, 15, 23, 0.07);
+  --tape-input: #ffffff;
+  --tape-input-focus: #ffffff;
+  --tape-border: #e6e8ee;
+  --tape-border-hover: #c8ccd6;
+  --tape-text: #0b0f17;
+  --tape-text-muted: #4a5160;
+  --tape-text-soft: #8a92a4;
+  --tape-accent: #00d692;
+  --tape-accent-hover: #00b87d;
+  --tape-info: #3b82f6;
+  --tape-info-soft: rgba(59, 130, 246, 0.12);
+  --tape-up: #069668;
+  --tape-up-soft: rgba(6, 150, 104, 0.12);
+  --tape-down: #d63146;
+  --tape-down-soft: rgba(214, 49, 70, 0.12);
+  --tape-warn: #d97706;
+  --tape-grid: rgba(11, 15, 23, 0.05);
+}
+
+html.dark {
+  --tape-bg: #0b0f17;
+  --tape-bg-elev: #11151f;
+  --tape-surface: #11151f;
+  --tape-surface-hover-bg: rgba(255, 255, 255, 0.04);
+  --tape-glass: rgba(17, 21, 31, 0.72);
+  --tape-button-bg: rgba(255, 255, 255, 0.07);
+  --tape-button-hover-bg: rgba(255, 255, 255, 0.11);
+  --tape-input: #0e1320;
+  --tape-input-focus: #0b0f17;
+  --tape-border: rgba(255, 255, 255, 0.08);
+  --tape-border-hover: rgba(255, 255, 255, 0.18);
+  --tape-text: #e8eaf0;
+  --tape-text-muted: #a6acba;
+  --tape-text-soft: #6b7280;
+  --tape-accent: #00ffa3;
+  --tape-accent-hover: #00e094;
+  --tape-info: #60a5fa;
+  --tape-info-soft: rgba(96, 165, 250, 0.14);
+  --tape-up: #4ade80;
+  --tape-up-soft: rgba(74, 222, 128, 0.12);
+  --tape-down: #f87171;
+  --tape-down-soft: rgba(248, 113, 113, 0.12);
+  --tape-warn: #fbbf24;
+  --tape-grid: rgba(255, 255, 255, 0.04);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--tape-font-sans);
+  font-feature-settings:
+    'cv02', 'cv03', 'cv04', 'cv11';
+  background-color: var(--tape-bg);
+  color: var(--tape-text);
+  overflow-x: hidden;
+}
+
+/* Subtle grid backdrop: dark mode only */
+html.dark body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--tape-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tape-grid) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: -1px -1px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at top, black 30%, transparent 80%);
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+}
+
+/* Scrollbars: terminal style */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--tape-border);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tape-border-hover);
+}
+
+/* Selection */
+::selection {
+  background: var(--tape-accent);
+  color: #000;
+}
+
+.theme-toggle {
+  border: 1px solid var(--tape-border);
+  background: var(--tape-button-bg);
+}
+
+.theme-toggle:hover {
+  border-color: var(--tape-border-hover);
+  background: var(--tape-button-hover-bg);
+}
+
+html.dark .theme-toggle {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Focus ring: accessible but not chunky */
+:focus-visible {
+  outline: 2px solid var(--tape-accent);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Number ticker: used to flash on price changes */
+.tick-flash-up {
+  animation: flashUp 700ms ease-out;
+}
+.tick-flash-down {
+  animation: flashDown 700ms ease-out;
+}
+@keyframes flashUp {
+  0% {
+    background-color: rgba(74, 222, 128, 0.32);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@keyframes flashDown {
+  0% {
+    background-color: rgba(248, 113, 113, 0.32);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--tape-surface-hover-bg);
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.06),
+    transparent
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
