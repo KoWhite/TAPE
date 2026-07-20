@@ -17,7 +17,7 @@ const TICKERS: TickerEntry[] = [
   // { code: 'US..SPX', label: 'S&P 500' },
   // { code: 'US..VIX', label: 'VIX' },
   { code: 'HK.800000', label: 'Hang Seng' },
-  { code: 'SH.000001', label: 'Shanghai Composite' },
+  // { code: 'SH.000001', label: 'Shanghai Composite' },
   { code: 'US.EWJ', label: 'Japan EWJ' },
   { code: 'US.GLD', label: 'Gold GLD' },
   { code: 'US.USO', label: 'Oil USO' },

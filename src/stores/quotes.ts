@@ -27,7 +27,7 @@ export const GLOBAL_TICKER_CODES = [
   // 'US..SPX',
   // 'US..VIX',
   'HK.800000',
-  'SH.000001',
+  // 'SH.000001',
   'US.EWJ',
   'US.GLD',
   'US.USO',
